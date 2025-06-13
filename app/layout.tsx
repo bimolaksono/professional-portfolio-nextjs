@@ -1,48 +1,77 @@
 // This code goes in your file: app/layout.tsx
+"use client"; // Add this line at the top to use React hooks like useState
 
-import type { Metadata } from "next";
+import { useState } from 'react'; // Import useState for managing dropdown state
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link"; // Import the Link component
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// FIX: Updated the title to be more dynamic and catchy.
-export const metadata: Metadata = {
-  title: "Lucky Bimolaksono | Building the Future of Commerce",
-  description: "Digital Payments Leader & Web3 Innovator, exploring the intersection of finance and technology.",
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* --- NAVIGATION HEADER --- */}
+      <head>
+          <title>Lucky Bimolaksono | Building the Future of Commerce</title>
+          <meta name="description" content="Digital Payments Leader & Web3 Innovator, exploring the intersection of finance and technology." />
+      </head>
+      <body>
         <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-10">
           <nav className="mx-auto max-w-4xl px-4 sm:px-8 py-4 flex justify-between items-center">
             <Link href="/" className="text-lg font-bold text-gray-900">
               Lucky Bimolaksono
             </Link>
-            <div className="space-x-4 sm:space-x-6">
+            <div className="flex items-center space-x-4 sm:space-x-6">
               <Link href="/" className="text-sm font-medium text-gray-600 hover:text-gray-900">
                 Home
               </Link>
-              {/* NEW: Link to the Projects page */}
-              <Link href="/projects/olivia-nft-minter" className="text-sm font-medium text-gray-600 hover:text-gray-900">
-                Projects
-              </Link>
+              
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
+              >
+                <button className="text-sm font-medium text-gray-600 hover:text-gray-900 focus:outline-none flex items-center py-2">
+                  Projects
+                  <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-20 ring-1 ring-black ring-opacity-5">
+                    <Link href="/projects/olivia-nft-minter" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Olivia's Art Minter
+                    </Link>
+                    <Link href="/projects/token-wrapper" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Token Wrapper
+                    </Link>
+                  </div>
+                )}
+              </div>
+              
               <Link href="/patents" className="text-sm font-medium text-gray-600 hover:text-gray-900">
                 Patents
               </Link>
+
+              {/* --- NEW LINKEDIN ICON LINK --- */}
+              <a href="https://www.linkedin.com/in/luckyb/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors">
+                <span className="sr-only">LinkedIn</span>
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.75c0-1.4-1.2-2.5-2.5-2.5S11 12.85 11 14.25V19h-3v-9h2.9v1.3a3.11 3.11 0 012.6-1.5c2.5 0 4.5 2 4.5 5.25V19z" />
+                </svg>
+              </a>
+
             </div>
           </nav>
         </header>
         
-        {children}
+        <main className="pt-20">
+            {children}
+        </main>
         
       </body>
     </html>
