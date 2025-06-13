@@ -16,12 +16,13 @@ export default function RootLayout({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <html lang="en">
+    <html lang="en" className="h-full bg-gray-50">
       <head>
           <title>Lucky Bimolaksono | Building the Future of Commerce</title>
           <meta name="description" content="Digital Payments Leader & Web3 Innovator, exploring the intersection of finance and technology." />
       </head>
-      <body>
+      {/* Use flex-col and h-full to make the footer sticky */}
+      <body className="flex flex-col h-full">
         <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-10">
           <nav className="mx-auto max-w-4xl px-4 sm:px-8 py-4 flex justify-between items-center">
             <Link href="/" className="text-lg font-bold text-gray-900">
@@ -57,7 +58,7 @@ export default function RootLayout({
                 Patents
               </Link>
 
-              {/* --- NEW LINKEDIN ICON LINK --- */}
+              {/* --- LINKEDIN ICON LINK --- */}
               <a href="https://www.linkedin.com/in/luckyb/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors">
                 <span className="sr-only">LinkedIn</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -69,10 +70,22 @@ export default function RootLayout({
           </nav>
         </header>
         
-        <main className="pt-20">
-            {children}
-        </main>
+        {/* The main content area now grows to fill available space */}
+        <div className="flex-grow">
+          <main className="pt-20">
+              {children}
+          </main>
+        </div>
         
+        {/* --- NEW FOOTER WITH DISCLAIMER --- */}
+        <footer className="w-full text-center p-6 bg-white border-t border-gray-200 mt-auto">
+            <p className="text-xs text-gray-500">
+                The views and opinions expressed on this personal website are my own and do not represent the views, positions, or policies of my employer.
+            </p>
+            <p className="mt-2 text-xs text-gray-400">
+                &copy; 2025 Lucky Bimolaksono
+            </p>
+        </footer>
       </body>
     </html>
   );
