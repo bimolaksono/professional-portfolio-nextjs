@@ -61,8 +61,8 @@ export default function AgenticCommercePage() {
   }, []);
 
   const fetchBalances = async () => {
-    // FIX: The condition now correctly checks against the placeholder string.
-    if (walletAddress && ethers.isAddress(lrtContractAddress) && lrtContractAddress !== 'YOUR_LUCKY_REWARD_TOKEN_ADDRESS') {
+    // FIX: Removed the redundant placeholder check that was causing the build error.
+    if (walletAddress && ethers.isAddress(lrtContractAddress)) {
         try {
             const provider = new ethers.BrowserProvider(window.ethereum);
             const contract = new Contract(lrtContractAddress, lrtContractABI, provider);
