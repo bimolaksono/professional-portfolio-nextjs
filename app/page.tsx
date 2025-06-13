@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex min-h-screen flex-col items-center p-8 md:p-24">
+      <main className="flex flex-col items-center p-8 pt-16 md:p-24">
   <div className="max-w-4xl w-full text-center">
     {/* OPTION 2 HEADLINE - FEEL FREE TO SWAP */}
     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
