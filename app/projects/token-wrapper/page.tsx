@@ -157,7 +157,6 @@ export default function TokenWrapperPage() {
 
 
     return (
-        // FIX: Using a specific padding-top class (pt-28) to clear the fixed header.
         <main className="flex w-full flex-col items-center px-4 pt-28 pb-8">
             <div className="w-full max-w-2xl text-center mb-12">
                 <h1 className="text-4xl font-bold">Token Wrapper Showcase</h1>
@@ -174,17 +173,17 @@ export default function TokenWrapperPage() {
                 ) : (
                     <div className="space-y-6">
                         <div>
-                            <p className="text-sm text-gray-500">Connected Wallet</p>
-                            <p className="font-mono text-xs break-all">{walletAddress}</p>
+                            <p className="text-sm font-medium text-gray-600">Connected Wallet</p>
+                            <p className="font-mono text-xs break-all text-gray-500">{walletAddress}</p>
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-center">
                             <div className="p-4 bg-gray-50 rounded-lg">
-                                <p className="text-sm font-medium">LRT Balance</p>
-                                <p className="text-2xl font-bold">{parseFloat(lrtBalance).toFixed(2)}</p>
+                                <p className="text-sm font-medium text-gray-700">LRT Balance</p>
+                                <p className="text-2xl font-bold text-indigo-600">{parseFloat(lrtBalance).toFixed(2)}</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
-                                <p className="text-sm font-medium">PLRT Balance</p>
-                                <p className="text-2xl font-bold">{parseFloat(plrtBalance).toFixed(2)}</p>
+                                <p className="text-sm font-medium text-gray-700">PLRT Balance</p>
+                                <p className="text-2xl font-bold text-indigo-600">{parseFloat(plrtBalance).toFixed(2)}</p>
                             </div>
                         </div>
 
@@ -196,7 +195,7 @@ export default function TokenWrapperPage() {
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
                                 placeholder="e.g., 50"
-                                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm"
+                                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             />
                         </div>
 

@@ -1,7 +1,7 @@
 // This code goes in your file: app/layout.tsx
-"use client"; // Add this line at the top to use React hooks like useState
+"use client";
 
-import { useState } from 'react'; // Import useState for managing dropdown state
+import { useState } from 'react';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -21,7 +21,6 @@ export default function RootLayout({
           <title>Lucky Bimolaksono | Building the Future of Commerce</title>
           <meta name="description" content="Digital Payments Leader & Web3 Innovator, exploring the intersection of finance and technology." />
       </head>
-      {/* Use flex-col and h-full to make the footer sticky */}
       <body className="flex flex-col h-full">
         <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-10">
           <nav className="mx-auto max-w-4xl px-4 sm:px-8 py-4 flex justify-between items-center">
@@ -43,7 +42,12 @@ export default function RootLayout({
                   <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 {isDropdownOpen && (
-                  <div className="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-20 ring-1 ring-black ring-opacity-5">
+                  // Increased width to w-52 to fit longer project title
+                  <div className="absolute right-0 mt-0 w-52 bg-white rounded-md shadow-lg py-1 z-20 ring-1 ring-black ring-opacity-5">
+                    {/* --- NEW LINK ADDED HERE --- */}
+                    <Link href="/projects/agentic-commerce" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      AI Shopping Agent
+                    </Link>
                     <Link href="/projects/olivia-nft-minter" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Olivia's Art Minter
                     </Link>
@@ -58,7 +62,6 @@ export default function RootLayout({
                 Patents
               </Link>
 
-              {/* --- LINKEDIN ICON LINK --- */}
               <a href="https://www.linkedin.com/in/luckyb/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors">
                 <span className="sr-only">LinkedIn</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -70,14 +73,12 @@ export default function RootLayout({
           </nav>
         </header>
         
-        {/* The main content area now grows to fill available space */}
-        <div className="flex-grow">
-          <main className="pt-20">
+        <main className="flex-grow">
+          <div className="pt-20">
               {children}
-          </main>
-        </div>
+          </div>
+        </main>
         
-        {/* --- NEW FOOTER WITH DISCLAIMER --- */}
         <footer className="w-full text-center p-6 bg-white border-t border-gray-200 mt-auto">
             <p className="text-xs text-gray-500">
                 The views and opinions expressed on this personal website are my own and do not represent the views, positions, or policies of my employer.
